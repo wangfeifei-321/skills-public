@@ -1,0 +1,4 @@
+interface:
+  display_name: "纯课程资料整理技能（不含报价）"
+  short_description: "只整理课程作业信息，不含任何报价"
+  default_prompt: "使用 $pure-coursework-materials-no-quote 根据学校/专业/学历/学年整理课程作业信息并输出单sheet Excel（不含报价）。"
