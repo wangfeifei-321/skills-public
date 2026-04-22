@@ -14,6 +14,17 @@ Produce one client-ready output that includes:
 This public skill defines intake, data extraction, QA, and output format.
 All pricing internals must be executed by private pricing service/tools only.
 
+## Runtime Prerequisites (mandatory for final quote)
+To produce final quote numbers, the runtime must be able to call a private quote API.
+
+Required environment variables:
+- `QUOTE_API_BASE` (example: `https://quote-api-private-production-3d2e.up.railway.app`)
+- `QUOTE_API_KEY` (sent via `X-API-Key` header)
+
+Hard stop rule:
+- If quote API is unreachable, unauthorized, or returns no `final_price`, do not fabricate pricing.
+- Continue with coursework extraction and Excel structure, but stop before final delivery and request pricing-channel recovery.
+
 ## Required Inputs
 - School (university)
 - Program/Department
@@ -87,6 +98,14 @@ Use private pricing service/tooling only. Never embed or expose internal model d
 Mandatory rules:
 - Compute `chargeable_words_total` from the final coursework table.
 - Request quote from private pricing channel using current final totals.
+  - Endpoint: `POST $QUOTE_API_BASE/quote`
+  - Headers:
+    - `Content-Type: application/json`
+    - `X-API-Key: $QUOTE_API_KEY`
+  - Minimum payload:
+    - `school`, `program`, `degree_level`, `target_year`, `scope`, `total_words`
+    - Include `package_type` or `target_score` when available
+  - Required response field: `final_price`
 - If any workload row changes, invalidate prior quote and recompute.
 - Final check: quote must match current `chargeable_words_total`; otherwise recalculate before delivery.
 
