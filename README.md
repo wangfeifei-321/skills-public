@@ -18,3 +18,5 @@ paths:
 为了输出最终报价数字（不仅是课程表），请在运行环境配置：
 - `QUOTE_API_BASE`（私有报价 API 地址）
 - `QUOTE_API_KEY`（私有密钥）
+- Python `.xlsx` 写入依赖（推荐 `openpyxl`）。若缺失可执行：
+  - `python3 -m pip install openpyxl`

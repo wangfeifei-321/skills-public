@@ -21,6 +21,10 @@ Required environment variables:
 - `QUOTE_API_BASE` (example: `https://quote-api-private-production-3d2e.up.railway.app`)
 - `QUOTE_API_KEY` (sent via `X-API-Key` header)
 
+Required local capability:
+- Python `.xlsx` writer available (recommend `openpyxl`)
+- If missing, install with: `python3 -m pip install openpyxl`
+
 Hard stop rule:
 - If quote API is unreachable, unauthorized, or returns no `final_price`, do not fabricate pricing.
 - Continue with coursework extraction and Excel structure, but stop before final delivery and request pricing-channel recovery.
