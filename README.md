@@ -20,3 +20,7 @@ paths:
 - `QUOTE_API_KEY`（私有密钥）
 - Python `.xlsx` 写入依赖（推荐 `openpyxl`）。若缺失可执行：
   - `python3 -m pip install openpyxl`
+
+## 推荐调用口令（避免英文输出）
+使用 `$dp-product-new-customer-quote` 生成课程作业与最终报价Excel，**全中文输出**。  
+学校=...；专业=...；学历=UG/PGT/PGR；入学年份=...；目标分数或套餐=...；覆盖范围=...

@@ -29,6 +29,16 @@ Hard stop rule:
 - If quote API is unreachable, unauthorized, or returns no `final_price`, do not fabricate pricing.
 - Continue with coursework extraction and Excel structure, but stop before final delivery and request pricing-channel recovery.
 
+## Language Lock (mandatory)
+Client-facing outputs must be Chinese by default:
+- Excel sheet title, section titles, table headers, quote block labels, notes, and risk statements must all be Chinese.
+- Keep official source names in original language when needed, but add Chinese explanation in adjacent text.
+- If user explicitly requests English output, require explicit confirmation before switching language.
+
+Hard stop:
+- Do not deliver final Excel if core labels are English-only.
+- Regenerate with Chinese headers/labels before delivery.
+
 ## Required Inputs
 - School (university)
 - Program/Department
@@ -141,6 +151,7 @@ Always include:
 Source labeling:
 - Include source year in labels when available (e.g., `Module Directory 2025/26`).
 - `信息源` cells must be clickable hyperlinks.
+- If source label is English, keep a Chinese field label and present as `中文说明（English Source Label）`.
 
 ### 8) Excel deliverable (required)
 Generate one `.xlsx` single-sheet output:
